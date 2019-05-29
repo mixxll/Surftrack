@@ -1,7 +1,41 @@
-// Note: This example requires that you consent to location sharing when
+      // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
+var lastLat = 0;
+var lastLng = 0;
+let getXMLFile = function (path, callback){
+    let request = new XMLHttpRequest();
+    request.open("GET", path);
+    request.setRequestHeader("Content-Type","text/xml");
+    request.onreadystatechange = function(){
+        if (request.readyState === 4 && request.status === 200){
+            callback(request.responseXML);
+        }
+    };
+    request.send();
+};
+
+getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml){
+    var channel = Array.from(xml.getElementsByTagName("feeds"));
+    var feed = Array.from(xml.getElementsByTagName("feed"));
+    var arrayX = Array.from(xml.getElementsByTagName("field1"));
+    var arrayY = Array.from(xml.getElementsByTagName("field2"));
+    var arrayZ = Array.from(xml.getElementsByTagName("field3"));
+    var arrayLat = Array.from(xml.getElementsByTagName("field4"));
+    var arrayLng = Array.from(xml.getElementsByTagName("field5"));
+    var arrayTimeStamp = Array.from(xml.getElementsByTagName("created-at"));
+
+    var lastLat = arrayLat[arrayLat.length - 1].innerHTML;
+    lastLat = lastLat;
+    console.log(lastLat/100);
+
+    var lastLng = arrayLng[arrayLng.length - 1].innerHTML;
+    lastLng = lastLng;
+    console.log(lastLng/100);
+  })
+
+
       var map, infoWindow;
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -88,6 +122,13 @@
         stylers: [{color: '#17263c'}]
       }
     ]
+        });
+        
+        var image = 'image/user.png';
+        var Marker = new google.maps.Marker({
+          position: {lat: lastLat, lng: lastLng},
+          map: map,
+          icon: image
         });
 
         infoWindow = new google.maps.InfoWindow;

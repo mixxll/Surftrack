@@ -57,24 +57,24 @@ function DrawData(){
 //     }
 // }
 
-// function draw(){
-//   background(240,2);
-//     //noStroke();
-//       //ellipse(0,0,10,10);
-// translate(width/2,height/2);
-//     var x = dataArray[index].x * multiplierFactor;
-//     var y = dataArray[index].y * multiplierFactor;
-//     var z = dataArray[index].z * 2;
-//     fill(2, 72, 115, map(abs(x*20),0,width/2, 220,50));
-//     line(x,y,previousPointX,previousPointY);
-//     previousPointX = x;
-//     previousPointY = y;
-//     //ellipse(x,y,z,z);    
-//     index++;  
-//     if(index >= dataArray.length){
-//       noLoop();
-//     }
-// }
+function draw(){
+  background(240,2);
+    //noStroke();
+      //ellipse(0,0,10,10);
+translate(width/2,height/2);
+    var x = dataArray[index].x * multiplierFactor;
+    var y = dataArray[index].y * multiplierFactor;
+    var z = dataArray[index].z * 2;
+    fill(2, 72, 115, map(abs(x*20),0,width/2, 220,50));
+    line(x,y,previousPointX,previousPointY);
+    previousPointX = x;
+    previousPointY = y;
+    //ellipse(x,y,z,z);    
+    index++;  
+    if(index >= dataArray.length){
+      noLoop();
+    }
+}
 
 function DrawDataM2(){
   background(240);
