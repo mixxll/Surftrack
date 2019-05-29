@@ -10,16 +10,17 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover; 
     -o-background-size: cover; 
-    background-color: #302f2f;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 /* Style the header */
 .header {
-  background-color: #f1f1f1;
+  background-color: lightblue;
   padding: 30px;
   text-align: center;
-  font-size: 35px;
+  font-size: 50px;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 //* Container for flexboxes */
@@ -41,13 +42,26 @@ body {
    -webkit-flex: 1;
    -ms-flex: 1;
    flex: 1;
+   background:white;
 }
 
+.connect-button{
+	height:200px;
+	width:100%;
+	font-size: 40pt;
+font-weight: 100;
+border-radius: 7px;
+color:lightblue;
+}
 /* Middle column */
 .column.middle {
   -webkit-flex: 2;
   -ms-flex: 2;
   flex: 2;
+  font-size: 14pt;
+   background:lightblue;
+   color: white;
+   font-weight:100;
 }
 
 /* Style the footer */
@@ -66,7 +80,7 @@ body {
 }
 
 .dropbtn {
-  background-color: black;
+  background-color: grey;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -130,6 +144,7 @@ div.desc {
 
 body {
     padding: 10%;
+    background-color: lightyellow;
     }
 
 @media only screen and (max-width: 480px) {

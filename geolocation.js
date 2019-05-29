@@ -2,6 +2,10 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
+      document.getElementById("geolocation").onclick = function() {
+location.href = "geolocation.html";
+      };
+
       var map, infoWindow;
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
