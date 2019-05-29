@@ -1,20 +1,4 @@
-<html>
-  <head>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script src="https://api4.windy.com/assets/libBoot.js"></script>
-  	<style>
-  		#windy {
-  			width: 100%;
-  			height: 100%;
-  		}
-  	</style>
-  </head>
-  <body>
-    <div id="windy"></div>
-
-    <script>
-
-    const options = {
+const options = {
 
                 // Required: API key
                 key: 'xPVx6s5HBWuWF2sjI78dnkjbnNFAaXNK',
@@ -41,9 +25,4 @@
             .setContent("SURF!!!!!!!!!!!!!!!!!!!!!!!")
             .openOn( map );
 
-    })
-
-    </script>
-
-  </body>
-</html>
+})
