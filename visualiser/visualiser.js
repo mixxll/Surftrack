@@ -158,7 +158,7 @@ function DrawData(){
 //     }
 // }
 
-function draw(){
+/*function draw(){
   background(240,2);
     //noStroke();
       //ellipse(0,0,10,10);
@@ -175,7 +175,7 @@ translate(width/2,height/2);
     if(index >= dataArray.length){
       noLoop();
     }
-}
+}*/
 
 // function DrawDataM2(){
 //   background(240);
