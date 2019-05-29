@@ -11,19 +11,16 @@ let wind = document.getElementById("ws");
 searchButton.addEventListener("click", findWeatherDetails);
 searchInput.addEventListener("keyup", enterPressed);
 
+    findWeatherDetails();
 function enterPressed(event) {
   if (event.key === "Enter") {
-    findWeatherDetails();
   }
 }
 
 function findWeatherDetails() {
-  if (searchInput.value === "") {
-  
-  }else {
-    let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&appid="+appKey;
+    let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + "Wellington" + "&appid="+appKey;
    httpRequestAsync(searchLink, theResponse);
-  }
+  
  }
 
 function theResponse(response) {

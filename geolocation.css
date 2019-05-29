@@ -1,0 +1,33 @@
+#map {
+    height: 80%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-size: cover; 
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover; 
+    -o-background-size: cover; 
+    background-color: #302f2f;
+    padding: 10%;
+}
+
+@media only screen and (max-width: 1024px) {
+
+body {
+    padding: 10%;
+    }
+
+@media only screen and (max-width: 480px) {
+
+body {
+    padding: 5%;
+    }
+
+/*Try multiple width breaks for different devices */
