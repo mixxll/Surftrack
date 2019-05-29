@@ -8,14 +8,8 @@ let temperature = document.getElementById("temp");
 let humidity = document.getElementById("humidity-div");
 let wind = document.getElementById("ws");
 
-searchButton.addEventListener("click", findWeatherDetails);
-searchInput.addEventListener("keyup", enterPressed);
 
     findWeatherDetails();
-function enterPressed(event) {
-  if (event.key === "Enter") {
-  }
-}
 
 function findWeatherDetails() {
     let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + "Wellington" + "&appid="+appKey;

@@ -2,6 +2,7 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
+<<<<<<< HEAD
 var lastLat = 0;
 var lastLng = 0;
 let getXMLFile = function (path, callback){
@@ -35,6 +36,11 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
     console.log(lastLng/100);
   })
 
+=======
+      document.getElementById("geolocation").onclick = function() {
+location.href = "geolocation.html";
+      };
+>>>>>>> 4688ae9a660dca32a307e5b4952f4ebea738ea4a
 
       var map, infoWindow;
       function initMap() {
