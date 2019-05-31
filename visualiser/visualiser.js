@@ -1,39 +1,56 @@
-var data;
-
-var dataArray = [];
-
-var index = 0;
-var previousPointX = 0;
-var previousPointY = 0;
-
-var pointX = 0;
-var pointY = 0;
-
-var x = 0;
-var y = 0;
-var start = true;
-
-var multiplierFactor = 15;
-var tightness = 0;
-
-function preload(){
-  data = loadJSON("data.json");
-}
+var surfData;
+var dataPoint;
+var index=0;
 
 function setup() {
-  var canvas = createCanvas(700, 700,WEBGL);
+  loadJSON('visualiser/data.json', gotData);
+  var canvas = createCanvas(700, 700);
   canvas.parent("div");
- // frameRate(15);
-  dataArray = data.data;
-  frameRate(20);
-  translate(width/2,height/2);
-  //DrawData();
-  //DrawDataM2();
-  background(240);
-
-
-  console.log(pointX);
+  frameRate(10);
 }
+
+function gotData(data){
+  surfData=data;
+}
+
+function draw(){
+
+
+  var multiplierFactor = 15;
+  background(0,10);
+  translate(width/2,height/2);
+  stroke(255);
+  line(0,0,width,0);
+  line(0, 0,0,-height);
+  line(0,0, -width, height);
+  if(surfData){
+    dataPoint = surfData[index];
+  }
+  fill(255);
+  if(surfData){
+  
+  beginShape();
+  vertex(-dataPoint.x * multiplierFactor, 0);
+  // fill(0,0,255);
+  // ellipse(-dataPoint.x * multiplierFactor, 0, 10,10);
+  vertex(0,dataPoint.y * multiplierFactor);
+  // fill(0,255,0);
+  // ellipse(0,dataPoint.y * multiplierFactor, 10,10);
+  vertex(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor);
+  // fill(255,0,0);
+  // ellipse(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor, 10,10);
+  noFill();
+  endShape(CLOSE);
+
+  //ellipse(dataPoint.x*20,dataPoint.y*20,dataPoint.z*10,dataPoint.z*10);
+  index++;
+    if(index==surfData.length){
+      index=0;
+    }
+  }
+}
+
+
 
 // function draw(){
 //   translate(width/2, height/2);
@@ -102,34 +119,34 @@ function setup() {
 
 // }
 
-function draw(){
-  //translate(width/2,height/2);
-  orbitControl();
-  if(start){
-    DrawData();
-  }
-  //start = false;
+// function draw(){
+//   //translate(width/2,height/2);
+//   orbitControl();
+//   if(start){
+//     DrawData();
+//   }
+//   //start = false;
   
 
-}
+// }
 
-function DrawData(){
-  background(240);
-    noStroke();
-      ellipse(0,0,10,10);
+// function DrawData(){
+//   background(240);
+//     noStroke();
+//       ellipse(0,0,10,10);
 
   
-  for(var i = 0; i < 100; i++){
-    var x = dataArray[i].x;
-    var y = dataArray[i].y;
-    var z = dataArray[i].z;
-    //console.log(map(x,0,width/2, 220,50));
-    fill(2, 72, 115, map(abs(x*20),0,width/2, 220,50));
+//   for(var i = 0; i < 100; i++){
+//     var x = dataArray[i].x;
+//     var y = dataArray[i].y;
+//     var z = dataArray[i].z;
+//     //console.log(map(x,0,width/2, 220,50));
+//     fill(2, 72, 115, map(abs(x*20),0,width/2, 220,50));
 
-    translate(x,y,z);
-    sphere(x*2);
-      }
-}
+//     translate(x,y,z);
+//     sphere(x*2);
+//       }
+// }
 
 
 // function draw(){
