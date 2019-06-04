@@ -14,6 +14,11 @@ body {
 }
 
 /* Style the header */
+.vis{
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
 .header {
   background-color: black;
   padding: 10px;
@@ -135,7 +140,6 @@ background:white;
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
   position: relative;
   margin: 20%;
   border:1px solid #ccc;
