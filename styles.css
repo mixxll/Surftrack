@@ -1,29 +1,29 @@
 html, body {
-    height: 100%;
+  height: 100%;
     margin: 0;
-    padding: 0;
 }
 
 body {
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
     -webkit-background-size: cover;
-    -moz-background-size: cover; 
-    -o-background-size: cover; 
-    font-family: Helvetica, sans-serif;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    font-family: 'East Sea Dokdo', cursive;
+    background-color: black;
 }
 
 /* Style the header */
 .header {
-  background-color: lightblue;
-  padding: 30px;
+  background-color: black;
+  padding: 10px;
   text-align: center;
-  font-size: 50px;
+  font-size: 100px;
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: 'East Sea Dokdo', cursive;
 }
 
-//* Container for flexboxes */
+/* Container for flexboxes */
 .row {
   display: -webkit-flex;
   display: flex;
@@ -33,8 +33,7 @@ body {
 .column {
   font-size: 50pt;
   text-align: center;
-  padding: 20%;
-  height: 30%; /* Should be removed. Only for demonstration */
+  padding: 10%;
 }
 
 /* Left and right column */
@@ -42,33 +41,40 @@ body {
    -webkit-flex: 1;
    -ms-flex: 1;
    flex: 1;
-   background:white;
+   background:black;
 }
 
 .connect-button{
-	height:200px;
-	width:100%;
+  font-family: 'East Sea Dokdo', cursive;
+	height:100px;
+	width:50%;
 	font-size: 40pt;
-font-weight: 100;
 border-radius: 7px;
-color:lightblue;
+color:black;
+background:white;
+   border: 1px solid lightgrey;
 }
 /* Middle column */
-.column.middle {
-  -webkit-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
-  font-size: 14pt;
-   background:lightblue;
+.column.middle { position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    text-align: center;
+    height: 125px;
+    width: 150px;
+  font-size: 15pt;
    color: white;
    font-weight:100;
+     margin-top:-7%;
 }
 
 /* Style the footer */
 .footer {
-  background-color: #f1f1f1;
+  background-color: black;
+  color:white;
   padding: 10px;
   text-align: center;
+  font-size: 21px;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -80,39 +86,45 @@ color:lightblue;
 }
 
 .dropbtn {
-  background-color: grey;
-  color: white;
+    font-family: 'East Sea Dokdo', cursive;
+  background-color: white;
+  color: black;
   padding: 16px;
-  font-size: 16px;
-  border: none;
+  font-size: 30px;
+  border: none;font-family: 'East Sea Dokdo', cursive;
 }
 
 .dropdown {
+    font-family: 'East Sea Dokdo', cursive;
+    font-size: 20px;
   position: relative;
   display: inline-block;
 }
 
 .dropdown-content {
+    font-family: 'East Sea Dokdo', cursive;
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  font-size: 30px;
 }
 
 .dropdown-content a {
+    font-family: 'East Sea Dokdo', cursive;-
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  background-color: white;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: lightgrey;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: black;} /*hover color*/
+.dropdown:hover .dropbtn {background-color: lightgrey;} /*hover color*/
 
 #windy {
         width: 100%;
@@ -211,12 +223,12 @@ div.slideshow-container img{
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 
@@ -224,11 +236,29 @@ div.slideshow-container img{
 
 body {
     padding: 10%;
-    background-color: lightyellow;
     }
-
+.connect-button{
+      width:100%;
+    }
+    .header{
+      font-size: 70px;
+    }
+    .footer{
+background-color: black;
+color:white;
+  border-radius: 7px;
+    }
+    .column.middle{
+      margin-top:-7%;
+      padding-left:14px;
+        font-size:17px;
+    }
+}
 @media only screen and (max-width: 480px) {
 
 body {
     padding: 5%;
     }
+    .column.middle{
+    }
+)
