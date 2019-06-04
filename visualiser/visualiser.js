@@ -4,7 +4,7 @@ var index=0;
 
 function setup() {
   loadJSON('visualiser/data.json', gotData);
-  var canvas = createCanvas(700, 700);
+  var canvas = createCanvas(windowWidth,windowHeight);
   canvas.parent("div");
   frameRate(10);
 }
@@ -28,7 +28,7 @@ function draw(){
   }
   fill(255);
   if(surfData){
-  
+
   beginShape();
   vertex(-dataPoint.x * multiplierFactor, 0);
   // fill(0,0,255);
@@ -50,6 +50,9 @@ function draw(){
   }
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 
 // function draw(){
@@ -87,7 +90,7 @@ function draw(){
 //     noStroke();
 //       ellipse(0,0,10,10);
 
-  
+
 //   for(var i = 0; i < dataArray.length; i++){
 //     var x = dataArray[i].x;
 //     var y = dataArray[i].y;
@@ -115,7 +118,7 @@ function draw(){
 //     translate(-x,-y,-z);
 //   }
 //   //start = false;
-  
+
 
 // }
 
@@ -126,7 +129,7 @@ function draw(){
 //     DrawData();
 //   }
 //   //start = false;
-  
+
 
 // }
 
@@ -135,7 +138,7 @@ function draw(){
 //     noStroke();
 //       ellipse(0,0,10,10);
 
-  
+
 //   for(var i = 0; i < 100; i++){
 //     var x = dataArray[i].x;
 //     var y = dataArray[i].y;
@@ -168,8 +171,8 @@ function draw(){
 //     fill(2, 72, 115, map(abs(x*20),0,width/2, 220,50));
 
 //     translate(0-x,0-y, 0-z)
-//     sphere(x*5);    
-//     index++;  
+//     sphere(x*5);
+//     index++;
 //     if(index >= dataArray.length){
 //       noLoop();
 //     }
@@ -187,8 +190,8 @@ translate(width/2,height/2);
     line(x,y,previousPointX,previousPointY);
     previousPointX = x;
     previousPointY = y;
-    //ellipse(x,y,z,z);    
-    index++;  
+    //ellipse(x,y,z,z);
+    index++;
     if(index >= dataArray.length){
       noLoop();
     }
