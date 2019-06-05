@@ -15,6 +15,7 @@ body {
 
 /* Style the header */
 .vis{
+  padding:5px;
     margin-left: auto;
     margin-right: auto;
     width:100%;
@@ -250,14 +251,16 @@ div.slideshow-container img{
 
 @media only screen and (max-width: 1024px) {
 
-body {
-    padding: 10%;
+.header {
+    padding: 5%;
+    font-size:50px;
+    margin-top:0;
     }
 .connect-button{
       width:100%;
     }
-    .header{
-      font-size: 70px;
+    .header2{
+      padding-top:70px;
     }
     .footer{
 background-color: #141516;
@@ -270,11 +273,7 @@ color:#fbffe5;
         font-size:17px;
     }
 }
-@media only screen and (max-width: 480px) {
-
-body {
-    padding: 5%;
-    }
-    .column.middle{
-    }
+@media only screen and (max-width: 900px) {
+  .header{
+  }
 )

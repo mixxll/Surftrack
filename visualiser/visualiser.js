@@ -4,7 +4,7 @@ var index=0;
 
 function setup() {
   loadJSON('visualiser/data.json', gotData);
-  var canvas = createCanvas(windowWidth-28,windowHeight);
+  var canvas = createCanvas(windowWidth,windowHeight);
   canvas.parent('div');
   frameRate(10);
 }

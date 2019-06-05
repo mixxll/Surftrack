@@ -1,14 +1,14 @@
 var yoff = 0.0;
 
 function setup() {
-  var canvas = createCanvas(windowWidth-28,windowHeight);
+  var canvas = createCanvas(windowWidth-25,windowHeight-280);
   canvas.parent('div');
-  frameRate(10);
+  frameRate(60);
 }
 
 function draw(){
   background(0,100,100);
-  fill(0,200,255,30);
+  fill(255,50);
   //noFill();
   stroke(255);
   for(var y = 0; y < height; y+= 100){
@@ -38,7 +38,6 @@ function Wave(yPos){
 
     // Set the vertex
     vertex(x, yPos - y);
-    console.log(y);
     // Increment x dimension for noise
     xoff += 0.05;
   }
