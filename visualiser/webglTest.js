@@ -3,9 +3,9 @@ var dataPoint;
 var index=0;
 
 function setup() {
-  loadJSON('visualiser/data.json', gotData);
-  var canvas = createCanvas(windowWidth-28,windowHeight);
-  canvas.parent('div');
+  loadJSON('data.json', gotData);
+  var canvas = createCanvas(windowWidth-28,windowHeight, WEBGL);
+  canvas.parent("div");
   frameRate(10);
 }
 
@@ -14,38 +14,35 @@ function gotData(data){
 }
 
 function draw(){
-  var multiplierFactor = 15;
   background(20, 21, 22,77);
-  translate(width/2,height/2);
-  stroke(251, 255, 229);
-  line(0,0,width,0);
-  line(0, 0,0,-height);
-  line(0,0, -width, height);
+  //stroke(251, 255, 229);
   if(surfData){
     dataPoint = surfData[index];
   }
   fill(255);
   if(surfData){
 
-  beginShape();
-  vertex(-dataPoint.x * multiplierFactor, 0);
-  // fill(0,0,255);
-  // ellipse(-dataPoint.x * multiplierFactor, 0, 10,10);
-  vertex(0,dataPoint.y * multiplierFactor);
-  // fill(0,255,0);
-  // ellipse(0,dataPoint.y * multiplierFactor, 10,10);
-  vertex(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor);
-  // fill(255,0,0);
-  // ellipse(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor, 10,10);
-  noFill();
-  endShape(CLOSE);
+  rotateX(dataPoint.x);
+  rotateY(dataPoint.y);
+  rotateZ(dataPoint.z);
 
-  //ellipse(dataPoint.x*20,dataPoint.y*20,dataPoint.z*10,dataPoint.z*10);
+
+
+  drawBoard();
+
   index++;
     if(index==surfData.length){
       index=0;
     }
   }
+
+  
+}
+
+function drawBoard(){
+  ambientMaterial(250);
+  box(10, 10, 10);
+  cone(10, 20);
 }
 
 function windowResized() {
