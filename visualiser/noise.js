@@ -1,56 +1,55 @@
-var surfData;
-var dataPoint;
-var index=0;
+var yoff = 0.0;
 
 function setup() {
-  loadJSON('visualiser/data.json', gotData);
-  var canvas = createCanvas(windowWidth,windowHeight);
+  var canvas = createCanvas(windowWidth-25,windowHeight-280);
   canvas.parent('div');
-  frameRate(10);
-}
-
-function gotData(data){
-  surfData=data;
+  frameRate(60);
 }
 
 function draw(){
-  var multiplierFactor = 15;
-  background(20, 21, 22,77);
-  translate(width/2,height/2);
-  stroke(251, 255, 229);
-  line(0,0,width,0);
-  line(0, 0,0,-height);
-  line(0,0, -width, height);
-  if(surfData){
-    dataPoint = surfData[index];
-  }
-  fill(255);
-  if(surfData){
-
-  beginShape();
-  vertex(-dataPoint.x * multiplierFactor, 0);
-  // fill(0,0,255);
-  // ellipse(-dataPoint.x * multiplierFactor, 0, 10,10);
-  vertex(0,dataPoint.y * multiplierFactor);
-  // fill(0,255,0);
-  // ellipse(0,dataPoint.y * multiplierFactor, 10,10);
-  vertex(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor);
-  // fill(255,0,0);
-  // ellipse(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor, 10,10);
-  noFill();
-  endShape(CLOSE);
-
-  //ellipse(dataPoint.x*20,dataPoint.y*20,dataPoint.z*10,dataPoint.z*10);
-  index++;
-    if(index==surfData.length){
-      index=0;
-    }
+  background(0,100,100);
+  fill(255,50);
+  //noFill();
+  stroke(255);
+  for(var y = 0; y < height; y+= 100){
+    Wave(y);
   }
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+function Wave(yPos){
+  beginShape();
+
+  var xoff = 0; // Option #1: 2D Noise
+  // let xoff = yoff; // Option #2: 1D Noise
+
+  // Iterate over horizontal pixels
+  for (var x = 0; x <= width; x += 10) {
+    // Calculate a y value according to noise, map to
+
+    // Option #1: 2D Noise
+    var y = map(noise(xoff, yoff), 0, 1, 50, -50);
+
+    // Option #2: 1D Noise
+    // let y = map(noise(xoff), 0, 1, 200,300);
+
+    // Set the vertex
+    vertex(x, yPos - y);
+    // Increment x dimension for noise
+    xoff += 0.05;
+  }
+  // increment y dimension for noise
+  yoff += 0.001;
+  //vertex(width,yPos - y);
+  vertex(width, 0);
+  vertex(0, 0);
+  endShape();
+}
+
+
 
 
 // function draw(){
