@@ -55,22 +55,25 @@ body {
   left:40%;
   height:20%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(240, 240, 240, 0.5);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.weather p{
-  margin: auto;
-  font-size: 30px;
-  text-align: center;
-  justify-content: center
+.weather main{
+  font-size: 24px;
 }
 
-.sidenav a{
+.nav a{
   padding: 10px;
   text-decoration: none;
   font-size: 30px;
   color: #818181;
+}
+
+.nav a:hover{
+  color: white;
 }
 
 h1{
