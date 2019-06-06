@@ -10,7 +10,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     font-family: 'East Sea Dokdo', cursive;
-    background-color: #141516;
+    background-color: white;
 }
 
 /* Style the header */
@@ -19,32 +19,79 @@ body {
     margin-left: auto;
     margin-right: auto;
     width:100%;
+    position: relative;
     background-color:#141516;
 }
+
 .header {
   background-color: #141516;
-  margin-top:-210px;
-  height:250px;
+  height: 15%;
+  width: 100%;
   padding: 10px;
+  position: fixed;
+  z-index: 1;
   text-align: center;
-  font-size: 100px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
   color: #fbffe5;
   font-family: 'East Sea Dokdo', cursive;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.header2 {
-  background-color: #141516;
+
+.sidenav{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.weather{
+  margin: auto;
+  position: absolute;
+  width: 170px;
+  top:20%;
+  left:5%;
+  height:150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(240, 240, 240, 0.5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.weather main{
+  font-size: 24px;
+}
+
+.nav a{
+  padding: 10px;
+  text-decoration: none;
+  font-size: 30px;
+  color: #818181;
+}
+
+.nav a:hover{
+  color: white;
+}
+
+h1{
+  margin:auto 0px ;
   text-align: center;
-  font-size: 100px;
-  color: #fbffe5;
-  margin-top:-190px;
-  margin-bottom:-120px;
-  font-family: 'East Sea Dokdo', cursive;
+  font-size: 70px;
+}
+
+.info{
+  background-color: white;
 }
 
 /* Container for flexboxes */
-.row {
-  display: -webkit-flex;
-  display: flex;
+.connect {
+
+  position: absolute;
+  top:90%;
+  right:10%;
 }
 
 /* Create three unequal columns that sits next to each other */
@@ -59,13 +106,12 @@ body {
    -webkit-flex: 1;
    -ms-flex: 1;
    flex: 1;
-   background-color:#141516;
 }
 
 .connect-button{
   font-family: 'East Sea Dokdo', cursive;
 	height:100px;
-	width:50%;
+	width:330px;
 	font-size: 40pt;
 border-radius: 7px;
 color:#141516;
@@ -130,7 +176,7 @@ background-color:#141516;
 }
 
 .dropdown-content a {
-    font-family: 'East Sea Dokdo', cursive;-
+    font-family: 'East Sea Dokdo', cursive;
   color:#141516;;
   padding: 12px 16px;
   text-decoration: none;
@@ -265,7 +311,6 @@ div.slideshow-container img{
     .footer{
 background-color: #141516;
 color:#fbffe5;
-  border-radius: 7px;
     }
     .column.middle{
       margin-top:-7%;
@@ -276,4 +321,4 @@ color:#fbffe5;
 @media only screen and (max-width: 900px) {
   .header{
   }
-)
+}
