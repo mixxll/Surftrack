@@ -14,7 +14,7 @@ function gotData(data){
 }
 
 function draw(){
-  background(20, 21, 22);
+  background(20, 21, 22,77);
   //stroke(251, 255, 229);
   if(surfData){
     dataPoint = surfData[index];
