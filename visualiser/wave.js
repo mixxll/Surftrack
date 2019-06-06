@@ -6,7 +6,7 @@ var offset = 0;
 var time = 0;
 
 function setup() {
-  var canvas = createCanvas(windowWidth-28,windowHeight);
+  var canvas = createCanvas(windowWidth-28,windowHeight-210);
   canvas.parent('div');
   frameRate(10);
   noStroke();
