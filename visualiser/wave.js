@@ -13,7 +13,7 @@ var windW = 5; // controls wave speed
 var humidityW = 50; // controls wave number
 
 function setup() {
-  var canvas = createCanvas(windowWidth-28,windowHeight);
+  var canvas = createCanvas(windowWidth-11,windowHeight-152);
   canvas.parent('div');
   frameRate(10);
   noStroke();
