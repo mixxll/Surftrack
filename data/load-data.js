@@ -27,8 +27,13 @@ var getData = function(){
     var arrayTimeStamp = Array.from(xml.getElementsByTagName("created-at"));
 
     var arrayX = arrayX;
-    //console.log(arrayX);
     accX = arrayX;
+
+    var arrayY = arrayY;
+    accY = arrayY;
+
+    var arrayZ = arrayZ;
+    accZ = arrayZ;
 
     var lastLng = arrayLng[arrayLng.length - 1].innerHTML;
     lastLng = lastLng;

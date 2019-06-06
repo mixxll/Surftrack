@@ -1,53 +1,45 @@
 var surfData;
 var dataPoint;
-var index=0;
+var index=1;
 
 function setup() {
   getData();
-  //console.log(arrayX[random(0, arrayX.length-1)]);
   var canvas = createCanvas(windowWidth,windowHeight);
   canvas.parent('vis');
   frameRate(10);
 }
 
-// function gotData(data){
-//   surfData=data;
-// }
-
 function draw(){
-  if(accX){
-    console.log(accX);
-  }
-  var multiplierFactor = 15;
-  background(20, 21, 22,77);
-  translate(width/2,height/2);
+  var multiplierFactor = 100;
+  background(78,  88, 104, 30);
+  translate(0,height/2);
   stroke(251, 255, 229);
-  line(0,0,width,0);
-  line(0, 0,0,-height);
-  line(0,0, -width, height);
-  if(surfData){
-    dataPoint = arrayX[index];
+  if(accX){
+    var x = accX[index].innerHTML;
+    var y = accY[index].innerHTML;
+    var z = accZ[index].innerHTML;
   }
   fill(255);
-  if(surfData){
+  if(accX){
 
-  beginShape();
-  vertex(-dataPoint * multiplierFactor, 0);
-  // fill(0,0,255);
-  // ellipse(-dataPoint.x * multiplierFactor, 0, 10,10);
-  vertex(0,dataPoint * multiplierFactor);
-  // fill(0,255,0);
-  // ellipse(0,dataPoint.y * multiplierFactor, 10,10);
-  vertex(- dataPoint * multiplierFactor,dataPoint.z * multiplierFactor);
-  // fill(255,0,0);
-  // ellipse(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor, 10,10);
-  noFill();
-  endShape(CLOSE);
+  rect(width/3, 0,0, x*40);
+  
+  rect(width/2,0,0, y*40);
+ 
+  rect(2/3*width,0,0, z*40);
+  
+    push();
+    noStroke();
 
-  //ellipse(dataPoint.x*20,dataPoint.y*20,dataPoint.z*10,dataPoint.z*10);
+  text('x', width/3 + 10, 0);
+  text('y', width/2 + 10, 0);
+  text('z', 2/3*width + 10, 0);
+
+  pop();
+
   index++;
-    if(index==surfData.length){
-      index=0;
+    if(index > accX.length-1){
+      index=1;
     }
   }
 }
