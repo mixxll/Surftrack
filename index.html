@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+  <script src="visualiser/libraries/p5.js" type="text/javascript"></script>
+  <script src="visualiser/libraries/p5.dom.js" type="text/javascript"></script>
+  <title>Surftrack</title>
+</head>
+<body>
+<!--<script src="http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={cc63d73493510fd738750282ab5fc24a}"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="welcomepage.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+<script src="https://api4.windy.com/assets/libBoot.js"></script>
+<script src="windy.js"></script>
+
+<!-- <div id="div1"><img src="image/welcome.jpg" width=100% height=100%></div> -->
+
+<div class="header">
+  <h1>SURFTRACK</h1>
+		<div class='nav'>
+			<a href="index.html">Home</a>
+			<a href="gallery.html">Gallery</a>
+			<a href="geolocation.html">Connect</a>
+			<a href="VisualiserTest.html">Visualiser</a>
+		</div>
+
+  <div class="connect">
+    <!--<button class = "connect-button" onclick="window.location.href='geolocation.html'">Connect to device</button></div>-->
+</div>
+</div>
+
+	<div class="weather">
+	<main id="main">
+			<u><div id="city-name" style="font-weight:700"></div></u>
+		<!--	<img src="" alt="" id="icon"> -->
+		<div class="temperature">
+			<div id="temp"></div>
+		</div>
+		<div class="humidity">
+			<div id="humidity-div"></div>
+		</div>
+		<div class="wind">
+			<div id="ws"></div>
+		</div>
+	</main>
+	<script src="weather.js"></script>
+	</div>
+<script src="visualiser/wave.js"></script>
+<script src="visualiser/boid.js"></script>
+	<div id="div" class="vis">
+
+		<canvas id="defaultCanvas"></canvas>
+
+	</div>
+
+
+
+<div class="footer">
+  <p>Victoria University of Wellington School of Design 2019</p>
+</div>
+
+</body>
+</html>
