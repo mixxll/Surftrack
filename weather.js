@@ -8,6 +8,8 @@ let temperature = document.getElementById("temp");
 let humidity = document.getElementById("humidity-div");
 let wind = document.getElementById("ws");
 
+var waveWind, waveHumidity, waveTemp;
+
 
     findWeatherDetails();
 
@@ -19,12 +21,15 @@ function findWeatherDetails() {
 
 function theResponse(response) {
   let jsonObject = JSON.parse(response);
-  console.log(jsonObject);
+  //console.log(jsonObject);
   cityName.innerHTML = jsonObject.name;
   /**icon.src = "http://openweathermap.org/img/w/" + jsonObject.weather[0].icon + ".png";**/
   temperature.innerHTML = "Temperature: " + parseInt(jsonObject.main.temp - 273) + "°";
+  waveTemp = parseInt(jsonObject.main.temp - 273);
   humidity.innerHTML = "Humidity: " + jsonObject.main.humidity + "%";
+  waveHumidity = jsonObject.main.humidity;
   wind.innerHTML = "Windspeed: " + jsonObject.wind.speed + "km/h";
+  waveWind = jsonObject.wind.speed;
 }
 
 function httpRequestAsync(url, callback)
