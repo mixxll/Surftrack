@@ -16,25 +16,6 @@ let getXMLFile = function (path, callback){
     };
     request.send();
 };
-
-getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml){
-    var channel = Array.from(xml.getElementsByTagName("feeds"));
-    var feed = Array.from(xml.getElementsByTagName("feed"));
-    var arrayX = Array.from(xml.getElementsByTagName("field1"));
-    var arrayY = Array.from(xml.getElementsByTagName("field2"));
-    var arrayZ = Array.from(xml.getElementsByTagName("field3"));
-    var arrayLat = Array.from(xml.getElementsByTagName("field4"));
-    var arrayLng = Array.from(xml.getElementsByTagName("field5"));
-    var arrayTimeStamp = Array.from(xml.getElementsByTagName("created-at"));
-
-    var lastLat = arrayLat[arrayLat.length - 1].innerHTML;
-    lastLat = lastLat;
-    console.log(lastLat/100);
-
-    var lastLng = arrayLng[arrayLng.length - 1].innerHTML;
-    lastLng = lastLng;
-    console.log(lastLng/100);
-  })
       //document.getElementById("geolocation").onclick = function() {
       //location.href = "geolocation.html";
      // };
@@ -126,13 +107,46 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
       }
     ]
         });
-        
+
+      $.ajax({
+      type: "GET",
+      async: true,
+      dataType: "xml",
+      success:
+      function (xml) {
+          getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml){
+          var channel = Array.from(xml.getElementsByTagName("feeds"));
+          var feed = Array.from(xml.getElementsByTagName("feed"));
+          var arrayX = Array.from(xml.getElementsByTagName("field1"));
+          var arrayY = Array.from(xml.getElementsByTagName("field2"));
+          var arrayZ = Array.from(xml.getElementsByTagName("field3"));
+          var arrayLat = Array.from(xml.getElementsByTagName("field4"));
+          var arrayLng = Array.from(xml.getElementsByTagName("field5"));
+          var arrayTimeStamp = Array.from(xml.getElementsByTagName("created-at"));              
+        })
+
+        console.debug();
+        console.info();
+        console.warn();
+        console.error();
+
+        var lastLat = arrayLat[arrayLat.length - 1].innerHTML;
+        lastLat = lastLat;
+        console.log(lastLat);
+
+        var lastLng = arrayLng[arrayLng.length - 1].innerHTML;
+        lastLng = lastLng;
+        console.log(lastLng);
+
+        var latLng = new google.maps.LatLng(lastLat, lastLng);
+
         var image = 'image/user.png';
-        var Marker = new google.maps.Marker({
-          position: {lat: lastLat, lng: lastLng},
-          map: map,
-          icon: image
+        var marker = new google.maps.Marker({
+        position:  latLng,
+        map: map,
+        icon: image
         });
+      }});
 
         infoWindow = new google.maps.InfoWindow;
 
@@ -162,7 +176,6 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-      }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -171,3 +184,4 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+    }
