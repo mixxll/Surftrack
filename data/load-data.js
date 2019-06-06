@@ -1,5 +1,8 @@
 var passLat = 0;
 var passLong = 0;
+
+var accX, accY, accZ = [];
+
 let getXMLFile = function (path, callback){
     let request = new XMLHttpRequest();
     request.open("GET", path);
@@ -12,7 +15,8 @@ let getXMLFile = function (path, callback){
     request.send();
 };
 
-getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml){
+var getData = function(){
+    getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml){
     var channel = Array.from(xml.getElementsByTagName("feeds"));
     var feed = Array.from(xml.getElementsByTagName("feed"));
     var arrayX = Array.from(xml.getElementsByTagName("field1"));
@@ -22,13 +26,15 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
     var arrayLng = Array.from(xml.getElementsByTagName("field5"));
     var arrayTimeStamp = Array.from(xml.getElementsByTagName("created-at"));
 
-    var lastLat = arrayLat[arrayLat.length - 1].innerHTML;
-    lastLat = lastLat;
-    console.log(lastLat/100);
+    var arrayX = arrayX;
+    //console.log(arrayX);
+    accX = arrayX;
 
     var lastLng = arrayLng[arrayLng.length - 1].innerHTML;
     lastLng = lastLng;
-    console.log(lastLng/100);
+
+    return(passLat);
+    //console.log(lastLng/100);
     // //get raw Longitidue
     // rawLong = arrayLong[feed.length].innerHTML;
     // splitLong = rawLong.split('.');
@@ -99,3 +105,5 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
     // passLat = lat;
     // passLong = long;  
 })
+}
+

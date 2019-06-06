@@ -36,6 +36,10 @@ function windowResized() {
 }
 
 function Wave(yPos, _xoff){
+
+  stroke(250, map(yPos,0,height,0,255));
+  strokeWeight(map(yPos,0,height,0,5));
+
   beginShape();
 
   var xoff =_xoff;

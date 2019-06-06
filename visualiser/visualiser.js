@@ -3,17 +3,21 @@ var dataPoint;
 var index=0;
 
 function setup() {
-  loadJSON('visualiser/data.json', gotData);
+  getData();
+  //console.log(arrayX[random(0, arrayX.length-1)]);
   var canvas = createCanvas(windowWidth,windowHeight);
-  canvas.parent('div');
+  canvas.parent('vis');
   frameRate(10);
 }
 
-function gotData(data){
-  surfData=data;
-}
+// function gotData(data){
+//   surfData=data;
+// }
 
 function draw(){
+  if(accX){
+    console.log(accX);
+  }
   var multiplierFactor = 15;
   background(20, 21, 22,77);
   translate(width/2,height/2);
@@ -22,19 +26,19 @@ function draw(){
   line(0, 0,0,-height);
   line(0,0, -width, height);
   if(surfData){
-    dataPoint = surfData[index];
+    dataPoint = arrayX[index];
   }
   fill(255);
   if(surfData){
 
   beginShape();
-  vertex(-dataPoint.x * multiplierFactor, 0);
+  vertex(-dataPoint * multiplierFactor, 0);
   // fill(0,0,255);
   // ellipse(-dataPoint.x * multiplierFactor, 0, 10,10);
-  vertex(0,dataPoint.y * multiplierFactor);
+  vertex(0,dataPoint * multiplierFactor);
   // fill(0,255,0);
   // ellipse(0,dataPoint.y * multiplierFactor, 10,10);
-  vertex(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor);
+  vertex(- dataPoint * multiplierFactor,dataPoint.z * multiplierFactor);
   // fill(255,0,0);
   // ellipse(- dataPoint.z * multiplierFactor,dataPoint.z * multiplierFactor, 10,10);
   noFill();
