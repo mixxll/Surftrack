@@ -1,49 +1,34 @@
-const flock = [];
-
 var yoff = 0.0;
 var waveNum = 10;
-var colour;
+var c;
 
 var offset = 0;
 var time = 0;
-var speed = 0.05;
-
-var tempW = 30; //controls wave colour
-var windW = 5; // controls wave speed
-var humidityW = 50; // controls wave number
 
 function setup() {
-  var canvas = createCanvas(windowWidth-11,windowHeight-152);
+  var canvas = createCanvas(windowWidth-28,windowHeight);
   canvas.parent('div');
   frameRate(10);
   noStroke();
-  tempW = random(0,40);
-  windW = random(0,100);
-  MapValues();
-
-  var boidSum = 0;
-  for (let i = 0; i < boidSum; i++) {
-    flock.push(new Boid());
-  }
-}
-
-function MapValues(){
-  var cMax = color(0 , 200, 255, 50);
-  var cMin = color(78,  88, 104, 30);
-
-  colour = lerpColor(cMin, cMax, map(tempW,0, 40, 0, 1));
-
-  speed = map(windW,0,100,0.01,0.07);
+  c = color(0,200,255,30);
 }
 
 function draw(){
-  background(237, 201, 175);
-  fill(colour);
+  background(237, 201, 175,30);
+
   for(var y = 0; y < height - height/waveNum; y+= height/waveNum){
     Wave(y-offset, y/100);
+    //offset+=0.1;
     offset = map(sin(time),0,1,0,100);
+    if(y > height/2){
+      c = color(237, 201, 175,30);
+      fill(c);
+    } else {
+      c = color(0,200,255,30);
+      fill(c);
+    }
   }
-  time += speed;
+  time += 0.05;
 }
 
 function windowResized() {
@@ -52,7 +37,7 @@ function windowResized() {
 
 function Wave(yPos, _xoff){
   beginShape();
-  fill(colour);
+
   var xoff =_xoff;
 
   for (var x = 0; x <= width; x += 10) {
@@ -66,11 +51,4 @@ function Wave(yPos, _xoff){
   vertex(width, 0);
   vertex(0, 0);
   endShape();
-
-
-  for (let boid of flock) {
-    boid.edges();
-    boid.update();
-    boid.show();
-  }
 }
