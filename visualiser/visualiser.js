@@ -2,46 +2,112 @@ var surfData;
 var dataPoint;
 var index=1;
 
+var maxX, maxY, maxZ; 
+var minX, minY, minZ; 
+
+var prevX, prevY = 0;
+
+var mover;
+var zoff = 0;
+
 function setup() {
   getData();
   var canvas = createCanvas(windowWidth,windowHeight);
   canvas.parent('vis');
   frameRate(10);
+  //angleMode(DEGREES);
+
+  mover = new Mover();
 }
 
 function draw(){
-  var multiplierFactor = 100;
-  background(78,  88, 104, 30);
-  translate(0,height/2);
+  var multiplierFactor = 50;
+  background(240);
+  //translate(0,height/2);
+  translate(width/2,height/2);
+  fill(40,100);
+  //ellipse(0,0,width/2,width/2);
+  var circleNum = 10;
+  for(var i = 0; i<circleNum; i ++){
+    NoiseCircle(width/10 +20*i);
+  }
+
   stroke(251, 255, 229);
   if(accX){
     var x = accX[index].innerHTML;
     var y = accY[index].innerHTML;
     var z = accZ[index].innerHTML;
+
+    minX = CalculateMin(accX);
+    minY = CalculateMin(accY);
+    minZ = CalculateMin(accZ);
+
+    maxX = CalculateMax(accX);
+    maxY = CalculateMax(accY);
+    maxZ = CalculateMax(accZ);
   }
   fill(255);
   if(accX){
 
-  rect(width/3, 0,0, x*40);
+    mover.update(x,y,z);
+    mover.display();
+
+    //rotate(z);
+
+    //ellipse(0 - x*multiplierFactor,0 - y*multiplierFactor,z*5);
+
+    // stroke(255);
+    // strokeWeight(5);
+    // line(prevX*multiplierFactor,prevY*multiplierFactor,x*multiplierFactor,y*multiplierFactor);
+    // prevX = x;
+    // prevY = y;
+
+    //ellipse(x*30,0,100,100);
+    //ellipse(0,y*30,100,100);
+    //ellipse(0,z*30,100,100);
+
+  // rect(width/3, 0,0, x*40);
   
-  rect(width/2,0,0, y*40);
+  // rect(width/2,0,0, y*40);
  
-  rect(2/3*width,0,0, z*40);
+  // rect(2/3*width,0,0, z*40);
   
-    push();
-    noStroke();
+  // push();
+  //   noStroke();
 
-  text('x', width/3 + 10, 0);
-  text('y', width/2 + 10, 0);
-  text('z', 2/3*width + 10, 0);
+  // text('x', width/3 + 10, 0);
+  // text('y', width/2 + 10, 0);
+  // text('z', 2/3*width + 10, 0);
 
-  pop();
+  // pop();
 
   index++;
     if(index > accX.length-1){
       index=1;
+      mover.reset();
     }
   }
+}
+
+function CalculateMax(array){
+  var max = -100;
+  //console.log(array[i].innerHTML);
+  for(var i = 0; i <= array.length; i++){
+    if(array[i] > max){
+      max = array[i];
+    }
+  }
+  return(max); 
+}
+
+function CalculateMin(array){
+  var min = 100;
+  for(var i = 0; i <= array.length; i++){
+    if(array[i] < min){
+      min = array[i];
+    }
+  }
+  return(min); 
 }
 
 function windowResized() {
@@ -274,3 +340,29 @@ translate(width/2,height/2);
 //     }
 //       }
 // }
+
+function NoiseCircle(radius){
+  var noiseMax = 7;
+
+  push();
+  noStroke();
+  fill(133,156,160,150);
+  beginShape();
+
+  for(var a = 0; a < TWO_PI; a+= 0.1){
+    var xoff = map(cos(a),-1,1,0,noiseMax);
+    var yoff = map(sin(a),-1,1,0,noiseMax);
+
+    var r = map(noise(xoff,yoff,zoff),0,1,radius - height/15,radius + height/15);
+    var xPos = r * cos(a);
+    var yPos = r * sin(a);
+
+    vertex(xPos,yPos);
+
+
+  }
+      endShape(CLOSE);
+
+  zoff += 0.001;
+  pop();
+}

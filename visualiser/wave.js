@@ -21,7 +21,7 @@ function setup() {
   noStroke();
   //MapValues();
 
-  var boidSum = 0;
+  var boidSum = 5;
   for (let i = 0; i < boidSum; i++) {
     flock.push(new Boid());
   }
@@ -65,15 +65,12 @@ function windowResized() {
 }
 
 function Wave(yPos, _xoff) {
-
-
-
   beginShape();
   fill(colour);
   noStroke();
   var xoff = _xoff;
 
-  for (var x = 0; x <= width; x += 10) {
+  for (var x = 0; x <= width+10; x += 10) {
     var y = map(noise(xoff, yoff), 0, 1, 70, -70);
     vertex(x, yPos - y);
     xoff += 0.05;
@@ -90,7 +87,8 @@ function Wave(yPos, _xoff) {
   stroke(250, map(yPos, 0, height, 0, 255));
   strokeWeight(map(yPos, 0, height, 0, 5));
   var xoff = _xoff;
-  for (var x = 0; x <= width; x += 10) {
+  for (var x = 0; x <= width+10; x += 10) {
+
     var y = map(noise(xoff, yoff), 0, 1, 70, -70);
     vertex(x, yPos - y);
     xoff += 0.05;
