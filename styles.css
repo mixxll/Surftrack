@@ -62,7 +62,7 @@ h1{
   height: 10%;
   width: 100%;
   top:10%;
-  margin-bottom: 20%;
+  margin-bottom: 2%;
   padding: 10px;
   position: relative;
   z-index: 1;
@@ -210,7 +210,7 @@ div.slideshow-container img{
 
 @media only screen and (max-width: 1024px) {
 h1{
-  font-size: 200px;
+  font-size: 100px;
 }
  .nav a{
   font-size: 50px;
@@ -219,7 +219,7 @@ h1{
 .header {
     padding: 5%;
     font-size:50px;
-    height: 20%;
+    height: 30%;
     }
 
 .vis{
@@ -252,7 +252,7 @@ h1{
       padding-top:70px;
     }
 .footer {
-  font-size: 50px;
+  font-size: 30px;
 }
 }
 @media only screen and (max-width: 480px) {
@@ -260,7 +260,7 @@ h1{
   font-size: 50px;
 }
 .header {
-    height: 3%;
+    height: 10%;
     }
 
   .nav a{
