@@ -15,7 +15,7 @@ var humidityW = 50; // controls wave number
 var isMapped = false;
 
 function setup() {
-  var canvas = createCanvas(windowWidth - 28, windowHeight - 50);
+  var canvas = createCanvas(windowWidth, windowHeight - 50);
   canvas.parent('div');
   frameRate(10);
   noStroke();
