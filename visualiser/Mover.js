@@ -39,13 +39,18 @@ class Mover {
     //this.velocity.limit(this.maxSpeed);
     //this.acceleration.mult(0);
 
+    this.previousPosition = this.position;
     this.position = createVector(x*5,y*5);
+
+    this.previousPosition.x = lerp(this.previousPosition.x, this.position.x, 0.05);
+    this.previousPosition.y = lerp(this.previousPosition.y, this.position.y, 0.05);
+
     this.r = float(z) * 2;
   }
 
   display() {
 
-    //ellipse(this.position.x, this.position.y,10,10);
+    ellipse(this.position.x, this.position.y,10,10);
     push();
         fill(250);
     translate(this.position.x,this.position.y);
@@ -55,5 +60,6 @@ class Mover {
 
 
     pop();
+
   }
 }

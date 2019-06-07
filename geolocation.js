@@ -35,9 +35,6 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
     passLng = lastLng;
     console.log(passLng);
   })
-      //document.getElementById("geolocation").onclick = function() {
-      //location.href = "geolocation.html";
-     // };
 
       var map, infoWindow;
       function initMap() {
@@ -134,87 +131,69 @@ getXMLFile("https://api.thingspeak.com/channels/789627/feeds.xml", function(xml)
 
         infoWindow = new google.maps.InfoWindow;
 
-        // Try HTML5 geolocation.
-        // if (navigator.geolocation) {
-        //   navigator.geolocation.getCurrentPosition(function(position) {
-        //     var pos = {
-        //       lat: position.coords.latitude,
-        //       lng: position.coords.longitude
-        //     };
-
-        //     //infoWindow.setPosition(pos);
-        //     //infoWindow.setContent('Location found.');
-        //     infoWindow.open(map);
-        //     map.setCenter(pos);
-
-        // // var image = 'image/user.png';
-        // // var Marker = new google.maps.Marker({
-        // //   position: {lat: position.coords.latitude, lng: position.coords.longitude},
-        // //   map: map,
-        // //   icon: image
-        // // });
-        //   }, function() {
-        //     handleLocationError(true, infoWindow, map.getCenter());
-        //   });
-        // } else {
-        //   // Browser doesn't support Geolocation
-        //   handleLocationError(false, infoWindow, map.getCenter());
-        // }
-
         var delayInMilliseconds = 500; //1 second
         setTimeout(function() {
-
-      
-          var splitLong = passLng.toString().split('.');
-
-          Longitude_degrees = parseInt(splitLong[0]);
-          Longitude_minutes = parseInt(splitLong[1]) / 10000;
-          passLng = Longitude_degrees + Longitude_minutes / 60 
-          console.log(Longitude_degrees);
-          console.log(Longitude_minutes);
-
-          var splitLat = passLat.toString().split('.');
-
-          Latitude_degrees = parseInt(splitLat[0]) * -1;
-          Latitude_minutes = parseInt(splitLat[1]) / 10000;
-          passLat = Latitude_degrees + Latitude_minutes / 60 
-          passLat = passLat * -1;
-          //console.log(Longitude1);
-          console.log(passLat * -1);
+          
+          locationConverter()
 
           myLatlng = new google.maps.LatLng(passLat, passLng);
           map.setCenter(myLatlng);
           map.setZoom(mapZoom);
-
-          // var image = 'image/user.png';
-          // var marker = new google.maps.Marker({
-          // position: {lat: passLat, lng: passLng},
-          // map: map,
-          // icon: image
-        
-          // });
         }
 , delayInMilliseconds);
-       // map = new google.maps.Map(document.getElementById("map"),map);
 
+      
+}setTimeout(function() { putMarker(); }, 700);
 
-        ///////////////////////
-        //-41.177399
-        //174.465260
-   
-      }setTimeout(function() { putMarker(); }, 700);
 function putMarker(){
-          var image = 'image/user.png';
-        var Marker = new google.maps.Marker({
-          position: {lat: passLat, lng: passLng},
-          map: map,
-          icon: image
-        });
+  var image = 'image/user.png';
+  var Marker = new google.maps.Marker({
+    position: {lat: passLat, lng: passLng},
+    map: map,
+    icon: image
+  });
 }
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+function locationConverter(){
+  var negativeLng = 0;
+  var splitLong = passLng.toString().split('.');
+  Longitude_degrees = parseInt(splitLong[0]);
+
+  if(Longitude_degrees < 0){
+    Longitude_degrees *= -1;
+    negativeLng = 1;
+  }
+  Longitude_minutes = parseInt(splitLong[1]) / 10000;
+  passLng = Longitude_degrees + Longitude_minutes / 60 
+  if(negativeLng == 1){
+    passLng = passLng *= -1;
+  }
+
+
+  var negativeLat = 0;
+  var splitLat = passLat.toString().split('.');
+  Latitude_degrees = parseInt(splitLat[0]);
+  if(Latitude_degrees < 0){
+    Latitude_degrees *= -1;
+    negativeLat = 1;
+  }
+  Latitude_minutes = parseInt(splitLat[1]) / 10000;
+  passLat = Latitude_degrees + Latitude_minutes / 60 
+  if(negativeLat == 1){
+    passLat = passLat *= -1;
+  }
+  if (passLat == 0){
+    passLat = -41.29555;
+    console.log("noGPS");
+  }
+  if (passLng == 0){
+    passLng = 174.7752;
+  }
+}
