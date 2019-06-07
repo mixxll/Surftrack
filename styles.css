@@ -50,6 +50,8 @@ body {
     background-color:#141516;
 }
 h1{
+  background-color: #141516;
+  width:100%;
   margin:auto 0px ;
   text-align: center;
   font-size: 70px;
@@ -60,6 +62,7 @@ h1{
   height: 10%;
   width: 100%;
   top:10%;
+  margin-bottom: 20%;
   padding: 10px;
   position: relative;
   z-index: 1;
